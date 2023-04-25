@@ -1,0 +1,23 @@
+Allmän planering
+
+Jag vill försöka mig på en clicker
+
+Man ska kunna klicka på en knapp och få någon sorts currency
+som man ska kunna spendera på några olika uppgraderingar.
+Uppgraderingarna ska antingen göra så att man får mer currency per klick
+eller få currency passivt.
+
+Jag siktar på minst 1 uppgradering och om jag har tid så borde
+jag kunna göra fler relativt enkelt.
+
+Jag vill försöka göra en grafisk clicker och förhoppningsvis är det inte för svårt.
+
+
+Specifik planering
+
+(Mest gissningar)
+
+Jag kommer behöva någon sorts scanner som känner när jag klickar på de olika knapparna
+som kommer finnas. Jag kommer behöva koppla ihop ett knapptryck med en händelse
+så att det faktiskt händer något när man klickar.
+Det måste finnas någonting som håller koll på hur mycket currency man har.
