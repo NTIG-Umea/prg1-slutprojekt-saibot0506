@@ -5,19 +5,39 @@ Jag vill försöka mig på en clicker
 Man ska kunna klicka på en knapp och få någon sorts currency
 som man ska kunna spendera på några olika uppgraderingar.
 Uppgraderingarna ska antingen göra så att man får mer currency per klick
-eller få currency passivt.
+eller få currency passivt över tid.
 
 Jag siktar på minst 1 uppgradering och om jag har tid så borde
 jag kunna göra fler relativt enkelt.
 
-Jag vill försöka göra en grafisk clicker och förhoppningsvis är det inte för svårt.
+Jag vill försöka göra en grafisk clicker som förhoppningsvis inte är för svårt.
+
 
 
 Specifik planering
 
-(Mest gissningar)
-
-Jag kommer behöva någon sorts scanner som känner när jag klickar på de olika knapparna
-som kommer finnas. Jag kommer behöva koppla ihop ett knapptryck med en händelse
+Jag kommer behöva någon sorts scanner som känner när jag klickar på
+de olika knapparna som kommer finnas.
+Jag kommer behöva koppla ihop ett knapptryck med en händelse
 så att det faktiskt händer något när man klickar.
 Det måste finnas någonting som håller koll på hur mycket currency man har.
+Jag vill att man ska kunna se hur många gånger man har klickat totalt i en separat räknare.
+Man måste kunna se hur många av varje uppgradering man äger.
+
+Jag tänker göra clickern på samma sätt som i interaktiv grafik uppgiften
+
+
+PowerUps
+
+Active
+PowerUp 1. price 10, gives +1 per click, cost increase 2x
+
+PowerUp 2. price 1.000, gives +10 per click, cost increase 10x per 5
+
+
+Passive
+PowerUp 1. price 100, gives +1 per tick/second, cost increase 2x
+
+PowerUp 2. price 10.000, gives +10 per tick/second, cost increase +5.000
+
+
