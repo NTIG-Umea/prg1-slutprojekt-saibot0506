@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ public class Slutprojekt {
 
     }
 
-    private static int MC(){
+    private static void MC() {
         Scanner AIc = new Scanner(System.in);
     }
 
@@ -61,4 +62,5 @@ public class Slutprojekt {
         }
     }
 }
+
 
