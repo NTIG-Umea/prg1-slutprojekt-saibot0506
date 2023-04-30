@@ -12,27 +12,6 @@ public class Slutprojekt {
         Scanner AIc = new Scanner(System.in);
     }
 
-    //MoneyCounter
-    int MC = 0;
-
-    //TotalMoneyEarnedCounter
-    int TMEC = 0;
-
-    //ActivePowerUp
-    int APUp1 = 0;
-
-    int APUp2 = 0;
-
-    //PassivePowerUp
-    int PPUp1 = 0;
-
-    int PPUp2 = 0;
-
-    //IncomePerClick
-    int IPC = 0;
-
-    //IncomePerSecond
-    int IPS = 0;
 
 
     private class ML implements MouseListener {
@@ -62,5 +41,3 @@ public class Slutprojekt {
         }
     }
 }
-
-
