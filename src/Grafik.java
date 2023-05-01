@@ -91,7 +91,7 @@ public class Grafik extends Canvas {
         DrawText(60, 630, g, "Total Earned: " + TME, 20);
 
         DrawText(860, 555, g, "Income/Click: " + IPC, 20);
-        DrawText(860, 630, g, "Income/Second: " + IPS, 20);
+        DrawText(860, 630, g, "Passive Income: " + IPS + " /S", 20);
 
         DrawText(1410, 830, g, "Easter Egg", 20);
         DrawText(1415, 870, g, "(Click me)", 20);
