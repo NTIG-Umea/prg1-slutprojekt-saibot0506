@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
+import java.sql.SQLOutput;
 import java.util.TimerTask;
 
 public class Grafik extends Canvas implements Runnable{
@@ -41,6 +42,9 @@ public class Grafik extends Canvas implements Runnable{
 
     //Egg
     int Egg = 1000000;
+    int EggC = 0;
+
+    int timer = 0;
 
     private Rectangle clickBox = new Rectangle(475, 500, 250, 150);
     private Rectangle left1 = new Rectangle(100, 100, 200, 145);
@@ -88,7 +92,7 @@ public class Grafik extends Canvas implements Runnable{
         DrawRectangle(850, 525, 300, 50, new Color(0, 0, 0), g);
         DrawRectangle(850, 600, 300, 50, new Color(0, 0, 0), g);
 
-        //Easter Egg (Hidden :P )
+        //Easter Egg (Expand the window)
         DrawRectangle(egg.x, egg.y, egg.width, egg.height, new Color(0, 0, 0), g);
 
 
@@ -160,6 +164,7 @@ public class Grafik extends Canvas implements Runnable{
         double ns = 1000000000.0 / 25.0;
         double delta = 0;
         long lastTime = System.nanoTime();
+        int second = 0;
 
         while (running) {
             long now = System.nanoTime();
@@ -167,6 +172,14 @@ public class Grafik extends Canvas implements Runnable{
             lastTime = now;
 
             while(delta >= 1) {
+
+                if(second >= 24){
+                    MC += IPS;
+                    second = 0;
+                }
+                else {
+                    second++;
+                }
                 // Uppdatera koordinaterna
                 update();
                 // Rita ut bilden med uppdaterad data
@@ -177,48 +190,68 @@ public class Grafik extends Canvas implements Runnable{
         stop();
     }
     public void update() {
-
     }
 
     public class ML implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
-             if(e.getX() >= clickBox.x && e.getX() <= clickBox.x + clickBox.width && e.getY() >= clickBox.y && e.getY() <= clickBox.y + clickBox.height){
+            if(e.getX() >= clickBox.x && e.getX() <= clickBox.x + clickBox.width && e.getY() >= clickBox.y && e.getY() <= clickBox.y + clickBox.height){
                 System.out.println("Click!");
                 MC += IPC;
                 TME += IPC;
              }
-            if(e.getX() >= left1.x && e.getX() <= left1.x + left1.width && e.getY() >= left1.y && e.getY() <= left1.y + left1.height){
-                System.out.println("Purchase Complete!");
-                IPS += IPPUp1;
-                IPPUp1 *= 1.05;
-                OPPUp1++;
-                PPUp1 *= 1.15;
-                MC -= PPUp1;
+            if (e.getX() >= left1.x && e.getX() <= left1.x + left1.width && e.getY() >= left1.y && e.getY() <= left1.y + left1.height) {
+                if(MC >= PPUp1) {
+                    System.out.println("Purchase Complete!");
+                    IPS += IPPUp1;
+                    IPPUp1 *= 1.05;
+                    OPPUp1++;
+                    MC -= PPUp1;
+                    PPUp1 *= 1.15;
+                    }
+                    else {System.out.println("Not Enough Money");}
             }
             if(e.getX() >= left2.x && e.getX() <= left2.x + left2.width && e.getY() >= left2.y && e.getY() <= left2.y + left2.height) {
-                System.out.println("Purchase Complete!");
-                IPS += IPPUp2;
-                IPPUp2 *= 1.05;
-                OPPUp2++;
-                PPUp2 *= 1.15;
-                MC -= PPUp2;
+              if(MC >= PPUp2) {
+                  System.out.println("Purchase Complete!");
+                  IPS += IPPUp2;
+                  IPPUp2 *= 1.05;
+                  OPPUp2++;
+                  MC -= PPUp2;
+                  PPUp2 *= 1.15;
+              }
+              else {System.out.println("Not Enough Money");}
             }
             if(e.getX() >= right1.x && e.getX() <= right1.x + right1.width && e.getY() >= right1.y && e.getY() <= right1.y + right1.height) {
-                System.out.println("Purchase Complete!");
-                IPC += IAPUp1;
-                IAPUp1 *= 1.1;
-                OAPUp1++;
-                APUp1 *= 1.10;
-                MC -= APUp1;
+                if(MC >= APUp1) {
+                    System.out.println("Purchase Complete!");
+                    IPC += IAPUp1;
+                    IAPUp1 *= 1.1;
+                    OAPUp1++;
+                    MC -= APUp1;
+                    APUp1 *= 1.1;
+                }
+                else {System.out.println("Not Enough Money");}
             }
             if(e.getX() >= right2.x && e.getX() <= right2.x + right2.width && e.getY() >= right2.y && e.getY() <= right2.y + right2.height) {
-                System.out.println("Purchase Complete!");
-                IPC += IAPUp2;
-                IAPUp2 *= 1.05;
-                OAPUp2++;
-                APUp2 *= 1.15;
-                MC -= APUp2;
+               if (MC >= APUp2) {
+                   System.out.println("Purchase Complete!");
+                   IPC += IAPUp2;
+                   IAPUp2 *= 1.05;
+                   OAPUp2++;
+                   MC -= APUp2;
+                   APUp2 *= 1.15;
+               }
+               else {System.out.println("Not Enough Money");}
+            }
+            if(e.getX() >= egg.x && e.getX() <= egg.x + egg.width && e.getY() >= egg.y && e.getY() <= egg.y + egg.height) {
+                if(EggC == 0){
+                    System.out.println("Congratulation, Have Some Money!");
+                    MC += Egg;
+                    EggC++;
+                }
+                else {System.out.println("You Have Already Claimed This");
+                }
             }
         }
 
