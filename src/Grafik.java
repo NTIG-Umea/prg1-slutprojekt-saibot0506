@@ -3,8 +3,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
-import java.sql.SQLOutput;
-import java.util.TimerTask;
 
 public class Grafik extends Canvas implements Runnable{
     private BufferStrategy bs;
@@ -43,8 +41,6 @@ public class Grafik extends Canvas implements Runnable{
     //Egg
     int Egg = 1000000;
     int EggC = 0;
-
-    int timer = 0;
 
     private Rectangle clickBox = new Rectangle(475, 500, 250, 150);
     private Rectangle left1 = new Rectangle(100, 100, 200, 145);
@@ -226,10 +222,10 @@ public class Grafik extends Canvas implements Runnable{
                 if(MC >= APUp1) {
                     System.out.println("Purchase Complete!");
                     IPC += IAPUp1;
-                    IAPUp1 *= 1.1;
+                    IAPUp1 *= 2;
                     OAPUp1++;
                     MC -= APUp1;
-                    APUp1 *= 1.1;
+                    APUp1 *= 2.2;
                 }
                 else {System.out.println("Not Enough Money");}
             }
@@ -249,6 +245,7 @@ public class Grafik extends Canvas implements Runnable{
                     System.out.println("Congratulation, Have Some Money!");
                     MC += Egg;
                     EggC++;
+                    TME += Egg;
                 }
                 else {System.out.println("You Have Already Claimed This");
                 }

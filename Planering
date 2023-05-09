@@ -34,10 +34,127 @@ PowerUp 1. price 10, gives +1 per click, cost increase 10%
 
 PowerUp 2. price 1.000, gives +10 per click, cost increase 15%
 
-
 Passive
 PowerUp 1. price 100, gives +1 per second, cost increase 15%
 
 PowerUp 2. price 10.000, gives +10 per second, cost increase 15%
 
 
+
+
+Skrivet efter kodning är klar:
+
+Jag har gjort ett clicker spel.
+Man klickar på en knapp som man får pengar från,
+det börjar med att man får +1 per click men man kan öka det genom att köpa uppgraderingar.
+
+De uppgraderingar som finns är:
+"A Pair of Gloves" cost 10, increases by 2.2x per purchase,
+gives +1 income per click, increases by 2x per purchase.
+
+"Bigger gloves" cost 1000, increases by 1.15x per purchase,
+gives +100 income per click, increases by 1.05x per purchase.
+
+"A helping hand" cost 100, increases by 1.15x per purchase,
+gives +5 per second per purchase, increases by 1.05 per purchase.
+
+"Another helping hand" cost 10000, increases by 1.15x per purchase,
+gives +200 per second per purchase, increases by 1.05x per purchase.
+
+
+Man kan också få pengar från ett easter egg, om man klickar på det så får man 1,000,000
+pengar, det funkar bara en gång. (Förstora fönstret för att hitta det)
+
+Det finns fyra o-klickbara lådor som visar hur mycket:
+Pengar man har
+Totala pengar tjänade
+Pengar per klick
+Pengar per sekund (räknar bara från passiva uppgraderingar)
+
+Programmet består av flera delar
+Det finns flera ints som säger hur mycket olika uppgraderingar kostar och hur mycket de
+ger per sekund eller klick. Hur många av varje uppgradering man äger.
+En för varje räknare: pengar, totalt tjänat, inkomst per klick och inkomst per sekund.
+En som säger hur mycket easter ägget är värt och en som används för att man inte ska kunna
+ta ägget mer än en gång.
+
+
+Sedan finns det några rader som kopplar olika koordinater och storlekar till en variabel
+som man sedan kan använda för att lätt placera ut en låda och en mouse listener på lådan.
+(Bra om man ska placera flera lager på exakt samma plats som beskrivit ovan)
+
+Sedan kommer main som kör fönster koden så att så att man kan se någonting.
+
+{
+Efter det kommer koden som ritar ut alla lådor och även all text.
+De interaktiva lådorna använder de tidigare beskrivna (rad 82-84) för att placera ut dem.
+Lådorna som inte är interaktiva har koordinaterna och storlekar utskrivna som siffror
+i stället för variabler.
+All text har all information utskrivet för var och en förutom färg och font då de inte ska ändras
+medans allt annat ändras för varje text bit. (förutom textstorlek som bara skiljs på en)
+
+Om jag hade ändrat på koden hade jag sett till att allt som hör till varandra är på samma ställe
+(tex "clickbox" lådan och "click me" texten) för att det ska bli lättare att
+hålla koll på vad som hör till vad när det blir ganska mycket kod.
+}
+
+Efter det kommer metoden för att rita lådor, den innehåller nästan ingenting,
+Den bara säger vad som behövs för att man ska rita ut lådor (såsom koordinater och storlek)
+och att den faktiskt ska rita ut en låda.
+
+Sen kommer metoden för att skapa texter, den innehåller lite mer än metoden för lådor.
+Den gör nästan samma sak som låd metoden men istället för att välja färg för varje text
+så är det alltid samma färg och även alltid samma font.
+
+Efter det kommer all kod som gör att fönstret uppdateras.
+Jag förstår inte mycket om hur det fungerar så det är svårt att förklara
+men det finns där och fungerar.
+Under "public void run" så står det "if(second >= 24)". Den gör så att de passiva uppgraderingarna
+funkar som de ska. enligt matten så borde det stå 25 istället för 24, men enligt min observation
+så stämmer 24 bättre för att det ska uppdateras en gång per sekund. Jag vet inte om det
+beror på delays i datorn eller programmet eller var det kan vara men 24 såg mer
+rätt ut när jag observerade om det var rätt eller inte.
+
+
+Efter det kommer koden som gör så att alla interaktiva knappar gör någonting när man klicka på dem.
+Det är även andra delen där (rad 82-84 igen) används för att placera ut mouse listeners på exakt samma
+koordinater som lådorna.
+Den består av 2 ifs och en else för varje knapp (förutom klicklådan som bara har en if och ingen else)
+Den första if'en kollar om man klickar på en låda och om man gör det så kollar if nr2 om man
+har tillräckligt med pengar, om man inte har tillräckligt med pengar så får man en sout där
+det står "not enough money". Om man däremot har tillräckligt med pengar så händer det flera saker.
+
+Om vi tar "right1" eller "APUp1" som exempel. (jag skriver i en annan ordning än programmet gör
+så att det blir lite mer sammanhängande). Först läggs IAPUp1 till på IPC så att man nu får
+den extra inkomsten per klick. Sedan tas IAPUp1 och multipliceras så att nästa gång man köper
+uppgraderingen så kommer den att ge mer per klick än den tidigare uppgraderingen gjorde
+(i detta fall 2 gånger mer).
+Sedan tar den OAPUp1 och plussar med 1 så att det visas upp att man faktiskt äger den/en till.
+Den tar MC minus APUp1 så att pengarna faktiskt minskas när man spenderar det.
+Efter det multipliceras även APUp så att nästa gång man vill köpa uppgraderingen så kostar det mer
+(i detta fall 2.2 gånger mer).
+Och till sist får man en sout där det står "Purchase complete!"
+
+De passiva gör nästan samma sak män de lägger till PPUp1 på IPS i stället för IPC.
+
+Klicklådan har till skillnad bara 2 saker som händer. Först läggs IPC till på MC
+och sedan läggs IPC till på TME.
+
+Till sist kommer mouse listener koden som används på flera andra ställen
+men gör inte direkt någonting på egen hand.
+
+
+
+Genom hela projektets gång har jag fått ganska mycket hjälp. Från Fabian i klassen och Hjalmar(TE20)
+men jag har också spenderat en hel del tid på att försöka lösa problem
+och förstå vad jag ska göra på egen hand.
+
+
+Om jag hade kunnat ändrat på någonting (haft ork/tid) så hade jag gjort som jag skrev tidigare
+(rad 96-98). Om jag skulle ha gjort mer av spelet än bara ett skolprojekt hade jag gjort
+mycket bättre grafik, många fler uppgraderingar, bättre balansering med pris och inkomst.
+En spar funktion så att man inte måste börja från början varje gång man stänger av spelet.
+
+En lättare sak hade varit att göra så att man kan se hur mycket varje
+uppgradering ökar inkomsten per klick/sekund innan man köper den. Men det hade krävt att
+jag gör om nästan hela spelet grafiskt så att det passar ihop.
